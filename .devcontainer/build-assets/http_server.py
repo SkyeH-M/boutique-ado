@@ -4,6 +4,7 @@
 # Matt Rudge
 # 20th April, 2023
 
+
 import http.server
 
 
@@ -19,7 +20,8 @@ class NoCacheHTTPHandler(http.server.SimpleHTTPRequestHandler):
         """
         New method to send cache control headers
         """
-        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+        self.send_header("Cache-Control", "no-cache, no-store, "
+                         "must-revalidate")
         self.send_header("Pragma", "no-cache")
         self.send_header("Expires", "0")
 

@@ -29,7 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['boutiqueado-skye.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['boutiqueado-skye.herokuapp.com', 'localhost',
+                 '8000-skyehm-boutiqueado-hxm32x3kz7b.ws-eu97.gitpod.io']
 
 
 # Application definition
@@ -44,14 +45,14 @@ INSTALLED_APPS = [
     # added these below
     'django.contrib.sites',
     'allauth',
-    'allauth.account', # allows basic user account functionality
-    'allauth.socialaccount', # handles login via social media
+    'allauth.account',  # allows basic user account functionality
+    'allauth.socialaccount',  # handles login via social media
     'home',
     'products',
     'bag',
     'checkout',
     'profiles',
-    
+
     # Other
     'crispy_forms',
     'storages',
@@ -82,8 +83,8 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                # allows allAuth and Django to access http request obj in templates
-                'django.template.context_processors.request', # required by Allauth
+                # allows allAuth + Django to access http request obj in temps
+                'django.template.context_processors.request',  # required by Allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
@@ -100,10 +101,10 @@ TEMPLATES = [
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 AUTHENTICATION_BACKENDS = [
-    
+
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-    
+
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
@@ -111,7 +112,7 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 # pasted from source code
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email' # allow auth using username or email
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
@@ -130,7 +131,7 @@ if 'DATABASE_URL' in os.environ:
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
-    DATABASES = {       
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
